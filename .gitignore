@@ -1,0 +1,15 @@
+.settings
+.project
+.classpath
+.externalToolBuilders
+target
+build
+**/.settings
+**/.project
+**/.classpath
+**/target
+**/build
+**/.externalToolBuilders
+**/*.iml
+**/*.iws
+**/*.ipr
