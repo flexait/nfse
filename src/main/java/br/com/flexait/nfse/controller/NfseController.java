@@ -1,24 +1,31 @@
 package br.com.flexait.nfse.controller;
 
-import java.rmi.RemoteException;
+import javax.swing.JApplet;
+import javax.swing.JOptionPane;
 
-import javax.xml.rpc.ServiceException;
+public class NfseController extends JApplet {
 
-import br.com.flexait.nfse.ws.Input;
-import br.com.flexait.nfse.ws.Nfse;
-import br.com.flexait.nfse.ws.NfseWSServiceLocator;
-import br.com.flexait.nfse.ws.Output;
+	private static final long serialVersionUID = -820983556901220474L;
 
-public class NfseController {
-
-	public void consultar() throws RemoteException, ServiceException {
-		NfseWSServiceLocator locator = new NfseWSServiceLocator();
-		Nfse nfse = locator.getnfseSOAP();
-		Input parameters = new Input();
-		parameters.setNfseCabecMsg("");
-		parameters.setNfseDadosMsg("");
-		Output output = nfse.consultarLoteRps(parameters);
-		System.out.println(output.getOutputXML());
+	public NfseController() {
+		System.out.println("#foo bar");
+	}
+	
+	public void init() {
+		System.out.println("### init");
+	}
+	
+	public static void main(String[] args) {
+		JOptionPane.showMessageDialog(new NfseController(), "foo");
+	}
+	
+	public void consultar() {
+//		Nfse nfse = new NfseWSServiceLocator().getnfseSOAP();
+//		Input parameters = new Input();
+//		parameters.setNfseCabecMsg("");
+//		parameters.setNfseDadosMsg("");
+//		Output output = nfse.consultarLoteRps(parameters);
+//		System.out.println(output.getOutputXML());
 	}
 	
 }
