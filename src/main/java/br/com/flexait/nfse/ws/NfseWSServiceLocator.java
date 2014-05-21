@@ -7,6 +7,7 @@
 
 package br.com.flexait.nfse.ws;
 
+@SuppressWarnings("serial")
 public class NfseWSServiceLocator extends org.apache.axis.client.Service implements br.com.flexait.nfse.ws.NfseWSService {
 
     public NfseWSServiceLocator() {
@@ -70,7 +71,8 @@ public class NfseWSServiceLocator extends org.apache.axis.client.Service impleme
      * If this service has no port for the given interface,
      * then ServiceException is thrown.
      */
-    public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
+    @SuppressWarnings("rawtypes")
+	public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
             if (br.com.flexait.nfse.ws.Nfse.class.isAssignableFrom(serviceEndpointInterface)) {
                 br.com.flexait.nfse.ws.NfseSOAPStub _stub = new br.com.flexait.nfse.ws.NfseSOAPStub(new java.net.URL(nfseSOAP_address), this);
@@ -89,7 +91,8 @@ public class NfseWSServiceLocator extends org.apache.axis.client.Service impleme
      * If this service has no port for the given interface,
      * then ServiceException is thrown.
      */
-    public java.rmi.Remote getPort(javax.xml.namespace.QName portName, Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
+    @SuppressWarnings("rawtypes")
+	public java.rmi.Remote getPort(javax.xml.namespace.QName portName, Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         if (portName == null) {
             return getPort(serviceEndpointInterface);
         }
@@ -108,9 +111,11 @@ public class NfseWSServiceLocator extends org.apache.axis.client.Service impleme
         return new javax.xml.namespace.QName("http://nfse.abrasf.org.br", "NfseWSService");
     }
 
-    private java.util.HashSet ports = null;
+    @SuppressWarnings("rawtypes")
+	private java.util.HashSet ports = null;
 
-    public java.util.Iterator getPorts() {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public java.util.Iterator getPorts() {
         if (ports == null) {
             ports = new java.util.HashSet();
             ports.add(new javax.xml.namespace.QName("http://nfse.abrasf.org.br", "nfseSOAP"));
