@@ -1,75 +1,68 @@
 package br.com.flexait.nfse.builder;
 
-import java.util.List;
-
-import br.com.flexait.nfse.model.ListaRps;
+import br.com.flexait.nfse.NfseException;
+import br.com.flexait.nfse.model.EnviarLoteRpsEnvio;
 import br.com.flexait.nfse.model.LoteRps;
-import br.com.flexait.nfse.model.Rps;
+import br.com.flexait.nfse.validation.NfseValidator;
+
+import com.thoughtworks.xstream.XStream;
 
 public class Nfse {
 
-	private final NfseBuilder nfseBuilder;
-	
-	private final RpsBuilder rpsBuilder;
-	
-	private final LoteRps loteRps;
-	
+	private static final String XML_HEADER = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+	private final XStream xstream;
+	private final EnviarLoteRpsEnvio enviarLoteRpsEnvio;
+	private boolean enableValidation;
+
 	protected Nfse() {
-		nfseBuilder = new NfseBuilder();
-		rpsBuilder = new RpsBuilder();
-		loteRps = new LoteRps();
+		xstream = xstream();
+		enviarLoteRpsEnvio = new EnviarLoteRpsEnvio();
+		enableValidation = true;
 	}
 
-	public static Nfse build() {
+	private XStream xstream() {
+		XStream xstream = new XStream();
+		xstream.alias("EnviarLoteRpsEnvio", EnviarLoteRpsEnvio.class);
+		xstream.autodetectAnnotations(true);
+		return xstream;
+	}
+
+	public static Nfse nfse() {
 		return new Nfse();
 	}
 
-	public String asXML() {
-		return nfseBuilder.build();
+	public String asXML() throws NfseException {
+		String xml = XML_HEADER	+ xstream.toXML(enviarLoteRpsEnvio);
+		if(enableValidation) {
+			try {
+				Nfse.validator().from(xml).validate();
+			} catch (Exception e) {
+				throw new NfseException(e);
+			}
+		}
+		return xml;
 	}
 
-	public Nfse withLoteId(String id) {
-		loteRps.setId(id);
+	public static RpsBuilder rps() {
+		return new RpsBuilder();
+	}
+
+	public static LoteNfseBuilder loteNfse() {
+		return new LoteNfseBuilder();
+	}
+
+	public Nfse withLoteRps(LoteRps loteRps) {
+		enviarLoteRpsEnvio.setLoteRps(loteRps);
 		return this;
 	}
 
-	public Nfse withNumeroLote(Long numero) {
-		loteRps.setNumeroLote(numero);
-		return this;
+	public static NfseValidator validator() {
+		return new NfseValidator();
 	}
 
-	public Nfse withCnpj(String cnpj) {
-		loteRps.setCnpj(cnpj);
+	public Nfse disableValidation() {
+		this.enableValidation = false;
 		return this;
-	}
-
-	public Nfse withInscricaoMunicipal(String inscricaoMunicipal) {
-		loteRps.setInscricaoMunicipal(inscricaoMunicipal);
-		return this;
-	}
-
-	public Nfse addRps(List<ListaRps> rps) {
-		loteRps.addRps(rps);
-		return this;
-	}
-
-	public Nfse addRps(ListaRps... rps) {
-		loteRps.addRps(rps);
-		return this;
-	}
-
-	public Nfse v2_02() {
-		loteRps.v2_02();
-		return this;
-	}
-
-	public Nfse v2_01() {
-		loteRps.v2_01();
-		return this;
-	}
-
-	public Rps rps() {
-		return null;
 	}
 	
 }

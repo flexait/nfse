@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.UUID;
 
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 
 public class InfDeclaracaoPrestacaoServico {
 
@@ -12,6 +13,7 @@ public class InfDeclaracaoPrestacaoServico {
 	
 	private RpsDetalhe Rps;
 	
+	@XStreamConverter(DateConverter.class)
 	private Calendar Competencia;
 	
 	private Servico Servico;

@@ -1,11 +1,15 @@
 package br.com.flexait.nfse.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 public class IdentificacaoRps {
 
 	private Long Numero;
 	
+	@XStreamAlias("Serie")
 	private Serie serie;
 	
+	@XStreamAlias("Tipo")
 	private Tipo tipo;
 
 	public IdentificacaoRps() {

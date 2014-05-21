@@ -3,14 +3,21 @@ package br.com.flexait.nfse.model;
 import java.util.Calendar;
 import java.util.UUID;
 
-public class RpsDetalhe {
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
 
+public class RpsDetalhe {
+	
+	@XStreamAsAttribute
 	private String Id;
 	
 	private IdentificacaoRps IdentificacaoRps;
 	
+	@XStreamConverter(DateConverter.class)
 	private Calendar DataEmissao;
 	
+	@XStreamAlias("Status")
 	private Status status;
 
 	public RpsDetalhe() {

@@ -6,15 +6,7 @@ public class CpfCnpj {
 	
 	private String Cpf;
 	
-	public CpfCnpj(String cnpj, String cpf) {
-		super();
-		Cnpj = cnpj;
-		Cpf = cpf;
-	}
-	
-	public CpfCnpj(String cnpj) {
-		super();
-		Cnpj = cnpj;
+	public CpfCnpj() {
 	}
 
 	public void setCpf(String cpf) {

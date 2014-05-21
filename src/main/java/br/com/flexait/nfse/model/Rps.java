@@ -1,6 +1,8 @@
 package br.com.flexait.nfse.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 
+@XStreamAlias("Rps")
 public class Rps {
 	
 	private InfDeclaracaoPrestacaoServico InfDeclaracaoPrestacaoServico;

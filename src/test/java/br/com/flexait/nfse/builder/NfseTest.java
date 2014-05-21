@@ -8,69 +8,91 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.flexait.nfse.NfseException;
+import br.com.flexait.nfse.model.LoteRps;
+
 public class NfseTest {
 
-	Nfse nfse;
-	
+	Nfse builder;
+
 	@Before
 	public void setUp() throws Exception {
-		nfse = Nfse.build();
+		builder = Nfse.nfse();
 	}
 
 	@Test
 	public void shouldReturnNfseBuilder() {
-		assertThat(nfse, notNullValue());
+		assertThat(builder, notNullValue());
 	}
-	
+
 	@Test
-	public void shouldReturnXml() {
-		assertThat(nfse.asXML(), containsString("<?xml"));
-		assertThat(nfse.asXML(), containsString("<EnviarLoteRpsEnvio xmlns="));
-		assertThat(nfse.asXML(), containsString("<LoteRps Id="));
+	public void shouldReturnXml() throws Exception {
+		builder = builder.withLoteRps(new LoteNfseBuilder().build()).disableValidation();
+		assertThat(builder.asXML(), containsString("<?xml"));
+		assertThat(builder.asXML(),
+				containsString("<EnviarLoteRpsEnvio xmlns="));
+		assertThat(builder.asXML(), containsString("<LoteRps Id="));
 	}
-	
-	@Test
-	public void shouldSetIdLote() {
-		assertThat(nfse.withLoteId("foo").asXML(), containsString("<LoteRps Id=\"foo"));
-	}
-	
-	@Test
-	public void shouldSetCnpj() {
-		assertThat(nfse.withCnpj("123").asXML(), containsString("<Cnpj>123</Cnpj>"));
-	}
-	
-	@Test
-	public void shouldSetInscricaoMunicipal() {
-		assertThat(nfse.withInscricaoMunicipal("31313").asXML(), containsString("<InscricaoMunicipal>31313</InscricaoMunicipal>"));
-	}
-	
-	@Test
-	public void shouldSetNumeroLote() {
-		assertThat(nfse.withNumeroLote(10L).asXML(), containsString("<NumeroLote>10</NumeroLote>"));
-	}
-	
-	@Test
-	public void shouldSetDefaultVersao() {
-		assertThat(nfse.asXML(), containsString("versao=\"2.01"));
-	}
-	
-	@Test
-	public void shouldSetVersao2_02() {
-		assertThat(nfse.v2_02().asXML(), containsString("versao=\"2.02"));
-	}
-	
-	@Test
-	public void shouldSetVersao2_01() {
-		assertThat(nfse.v2_01().asXML(), containsString("versao=\"2.01"));
-	}
-	
+
 	@Test
 	public void shouldReturnRpsBuilder() {
-		assertThat(nfse.rps(), instanceOf(RpsBuilder.class));
+		assertThat(Nfse.rps(), instanceOf(RpsBuilder.class));
+	}
+
+	@Test
+	public void shouldReturnAXmlEnviarLote() throws Exception {
+		String xml = builder.disableValidation().asXML();
+		assertThat(xml, containsString("<EnviarLoteRpsEnvio"));
+	}
+
+	@Test
+	public void shouldAddXmlHeader() throws Exception {
+		String xml = builder.disableValidation().asXML();
+		assertThat(xml, containsString("<?xml"));
+	}
+
+	@Test
+	public void shouldAddLoteRps() throws Exception {
+		LoteRps lote = Nfse.loteNfse().withCnpj("123").build();
+		Nfse nfse = builder.disableValidation().withLoteRps(lote);
+
+		assertThat(nfse.asXML(), containsString("<Cnpj>123</Cnpj>"));
+	}
+
+	@Test
+	public void shouldAddRps() throws Exception {
+		LoteRps lote = Nfse.loteNfse().withCnpj("123")
+				.addRps(Nfse.rps().cancelado().build()).build();
+		Nfse nfse = builder.withLoteRps(lote).disableValidation();
+
+		assertThat(nfse.asXML(), containsString("<Status>2</Status>"));
+		assertThat(nfse.asXML(), containsString("<QuantidadeRps>1</QuantidadeRps>"));
+	}
+	
+	@Test(expected = NfseException.class)
+	public void xmlShouldBeInvalid() throws Exception {
+		Nfse.nfse().asXML();
 	}
 	
 	@Test
-	public void shouldAddRps() {
-		
+	public void shouldDisableValidation() throws Exception {
+		Nfse.nfse().disableValidation().asXML();
+	}
+	
+	@Test
+	public void shouldCreateAValidXml() throws Exception {
+		LoteRps lote = Nfse.loteNfse()
+				.withCnpj("00000000000000")
+				.withNumeroLote(123123L)
+				.addRps(
+						Nfse.rps()
+						.withNumero(1L)
+						.withInfId("d")
+						.build()
+				)
+				.build();
+		Nfse nfse = builder.withLoteRps(lote);
+		String asXML = nfse.asXML();
+		System.out.println(asXML);
 	}
 }

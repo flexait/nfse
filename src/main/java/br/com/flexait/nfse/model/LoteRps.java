@@ -1,6 +1,7 @@
 package br.com.flexait.nfse.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
@@ -23,12 +24,13 @@ public class LoteRps {
 	
 	private int QuantidadeRps;
 	
-	private final List<ListaRps> ListaRps;
+	private final List<Rps> ListaRps;
 	
 	public LoteRps() {
 		Id = UUID.randomUUID().toString();
 		ListaRps = new ArrayList<>();
 		versao = Versao.V2_01;
+		CpfCnpj = new CpfCnpj();
 	}
 
 	@Override
@@ -83,33 +85,29 @@ public class LoteRps {
 		return QuantidadeRps;
 	}
 
-	public List<ListaRps> getListaRps() {
+	public List<Rps> getRps() {
 		return Collections.unmodifiableList(ListaRps);
 	}
 
-	public void addRps(List<ListaRps> rps) {
+	public void addRps(List<Rps> rps) {
 		ListaRps.addAll(rps);
 		QuantidadeRps = ListaRps.size();
 	}
-
-	public void setCnpj(String cnpj) {
-		// TODO Auto-generated method stub
-		
+	
+	public void addRps(Rps... rps) {
+		addRps(Arrays.asList(rps));
 	}
 
-	public void addRps(ListaRps[] rps) {
-		// TODO Auto-generated method stub
-		
+	public void setCnpj(String cnpj) {
+		CpfCnpj.setCnpj(cnpj);		
 	}
 
 	public void v2_02() {
-		// TODO Auto-generated method stub
-		
+		versao = Versao.V2_02;
 	}
 
 	public void v2_01() {
-		// TODO Auto-generated method stub
-		
+		versao = Versao.V2_01;
 	}
 
 }
