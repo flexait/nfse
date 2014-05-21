@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<EnviarLoteRpsEnvio xmlns="http://www.abrasf.org.br/nfse.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<LoteRps></LoteRps>
-<Signature></Signature>
-</EnviarLoteRpsEnvio>
