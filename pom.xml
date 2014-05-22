@@ -2,6 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+
 	<groupId>br.com.flexait</groupId>
 	<artifactId>nfse</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -64,7 +70,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
-				<version>2.4.2</version><!--$NO-MVN-MAN-VER$ -->
 				<configuration>
 					<executions>
 						<execution>
@@ -134,11 +139,11 @@
 	</scm>
 
 	<distributionManagement>
-		<!-- <repository>
+		<repository>
 			<id>sonatype-nexus-staging</id>
 			<name>Nexus Staging Repository</name>
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository> -->
+		</repository>
 		<snapshotRepository>
 			<id>sonatype-nexus-snapshot</id>
 			<name>Nexus Staging Repository</name>
