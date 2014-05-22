@@ -3,6 +3,8 @@ package br.com.flexait.nfse.model;
 import java.util.Calendar;
 import java.util.UUID;
 
+import br.com.flexait.nfse.converter.DateConverter;
+
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamConverter;

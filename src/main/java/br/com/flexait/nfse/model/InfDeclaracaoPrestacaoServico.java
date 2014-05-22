@@ -3,6 +3,8 @@ package br.com.flexait.nfse.model;
 import java.util.Calendar;
 import java.util.UUID;
 
+import br.com.flexait.nfse.converter.DateConverter;
+
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 
@@ -32,6 +34,8 @@ public class InfDeclaracaoPrestacaoServico {
 		Rps = new RpsDetalhe();
 		Id = UUID.randomUUID().toString();
 		Competencia = Calendar.getInstance();
+		OptanteSimplesNacional = SimNao.NAO;
+		IncentivoFiscal = SimNao.NAO;
 	}
 	
 	public String getId() {

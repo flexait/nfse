@@ -8,7 +8,8 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.flexait.nfse.NfseException;
+import br.com.flexait.nfse.exception.NfseException;
+import br.com.flexait.nfse.model.ExigibilidadeISS;
 import br.com.flexait.nfse.model.LoteRps;
 
 public class NfseTest {
@@ -27,7 +28,8 @@ public class NfseTest {
 
 	@Test
 	public void shouldReturnXml() throws Exception {
-		builder = builder.withLoteRps(new LoteNfseBuilder().build()).disableValidation();
+		builder = builder.withLoteRps(new LoteNfseBuilder().build())
+				.disableValidation();
 		assertThat(builder.asXML(), containsString("<?xml"));
 		assertThat(builder.asXML(),
 				containsString("<EnviarLoteRpsEnvio xmlns="));
@@ -66,33 +68,82 @@ public class NfseTest {
 		Nfse nfse = builder.withLoteRps(lote).disableValidation();
 
 		assertThat(nfse.asXML(), containsString("<Status>2</Status>"));
-		assertThat(nfse.asXML(), containsString("<QuantidadeRps>1</QuantidadeRps>"));
+		assertThat(nfse.asXML(),
+				containsString("<QuantidadeRps>1</QuantidadeRps>"));
 	}
-	
+
 	@Test(expected = NfseException.class)
 	public void xmlShouldBeInvalid() throws Exception {
 		Nfse.nfse().asXML();
 	}
-	
+
 	@Test
 	public void shouldDisableValidation() throws Exception {
 		Nfse.nfse().disableValidation().asXML();
 	}
-	
+
 	@Test
 	public void shouldCreateAValidXml() throws Exception {
-		LoteRps lote = Nfse.loteNfse()
+		LoteRps lote = Nfse
+				.loteNfse()
 				.withCnpj("00000000000000")
 				.withNumeroLote(123123L)
 				.addRps(
-						Nfse.rps()
-						.withNumero(1L)
-						.withInfId("d")
+						Nfse.rps().withNumero(1L).withInfId("d")
+						.withServico(
+								Nfse.servico()
+								.withValorServicos(10.0)
+								.withItemListaServico("1")
+								.withExigibilidadeISS(ExigibilidadeISS.EXIGIBILIDADE_SUSPENSA_PROCESSO_ADMINISTRATIVO)
+								.withCodigoMunicipio(123)
+								.withDiscriminacao("Test")
+								.build()
+						)
+						.withPrestador(
+								Nfse.prestador()
+								.withCnpj("12312312312312")
+								.build()
+						)
+						.withTomador(
+								Nfse.tomador()
+								.withCpf("00000000000")
+								.withEndereco(
+										Nfse.endereco()
+										.withEndereco("Rua")
+										.withNumero(1)
+										.withBairro("Bairro")
+										.withCodigoMunicipio(321)
+										.withUf("ES")
+										.withCep(29111111)
+										.build()
+								)
+								.build()
+						)
 						.build()
-				)
-				.build();
+					).build();
+		
 		Nfse nfse = builder.withLoteRps(lote);
 		String asXML = nfse.asXML();
 		System.out.println(asXML);
+	}
+
+	@Test
+	public void shouldReturnServicoBuilder() {
+		assertThat(Nfse.servico(), instanceOf(ServicoBuilder.class));
+	}
+	
+	@Test
+	public void shouldReturnPrestadorBuilder() {
+		assertThat(Nfse.prestador(), instanceOf(PrestadorBuilder.class));
+	}
+	
+	@Test
+	public void shouldReturnTomadorBuilder() {
+		assertThat(Nfse.tomador(), instanceOf(TomadorBuilder.class));
+	}
+	
+	@Test
+	public void shouldReturnEnderecoBuilder() {
+		assertThat(Nfse.endereco(), instanceOf(EnderecoBuilder.class));
 	}
 }

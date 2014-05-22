@@ -1,10 +1,10 @@
 package br.com.flexait.nfse.model;
 
-public class Prestador {
+public class IdentificacaoTomador {
 	
 	private CpfCnpj CpfCnpj;
 	
-	public Prestador() {
+	public IdentificacaoTomador() {
 		CpfCnpj = new CpfCnpj();
 	}
 
@@ -14,6 +14,11 @@ public class Prestador {
 
 	public void setCpfCnpj(CpfCnpj cpfCnpj) {
 		CpfCnpj = cpfCnpj;
+	}
+
+	@Override
+	public String toString() {
+		return "IdentificacaoTomador [CpfCnpj=" + CpfCnpj + "]";
 	}
 	
 }

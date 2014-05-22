@@ -1,4 +1,4 @@
-package br.com.flexait.nfse.model;
+package br.com.flexait.nfse.converter;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;

@@ -4,10 +4,14 @@ import java.util.Calendar;
 
 import br.com.flexait.nfse.model.IdentificacaoRps;
 import br.com.flexait.nfse.model.InfDeclaracaoPrestacaoServico;
+import br.com.flexait.nfse.model.Prestador;
 import br.com.flexait.nfse.model.Rps;
 import br.com.flexait.nfse.model.RpsDetalhe;
+import br.com.flexait.nfse.model.Servico;
+import br.com.flexait.nfse.model.SimNao;
 import br.com.flexait.nfse.model.Status;
 import br.com.flexait.nfse.model.Tipo;
+import br.com.flexait.nfse.model.Tomador;
 
 public class RpsBuilder {
 	
@@ -84,6 +88,41 @@ public class RpsBuilder {
 
 	public RpsBuilder withCompetencia(Calendar competencia) {
 		infDeclaracaoPrestacaoServico.setCompetencia(competencia);
+		return this;
+	}
+
+	public RpsBuilder withServico(Servico servico) {
+		infDeclaracaoPrestacaoServico.setServico(servico);
+		return this;
+	}
+
+	public RpsBuilder withPrestador(Prestador prestador) {
+		infDeclaracaoPrestacaoServico.setPrestador(prestador);
+		return this;
+	}
+
+	public RpsBuilder withTomador(Tomador tomador) {
+		infDeclaracaoPrestacaoServico.setTomador(tomador);
+		return this;
+	}
+
+	public RpsBuilder optanteSimplesNacional() {
+		infDeclaracaoPrestacaoServico.setOptanteSimplesNacional(SimNao.SIM);
+		return this;
+	}
+	
+	public RpsBuilder naoOptanteSimplesNacional() {
+		infDeclaracaoPrestacaoServico.setOptanteSimplesNacional(SimNao.NAO);
+		return this;
+	}
+
+	public RpsBuilder comIncentivoFiscal() {
+		infDeclaracaoPrestacaoServico.setIncentivoFiscal(SimNao.SIM);
+		return this;
+	}
+
+	public RpsBuilder semIncentivoFiscal() {
+		infDeclaracaoPrestacaoServico.setIncentivoFiscal(SimNao.NAO);
 		return this;
 	}
 

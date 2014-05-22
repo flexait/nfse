@@ -1,4 +1,4 @@
-package br.com.flexait.nfse;
+package br.com.flexait.nfse.exception;
 
 public class NfseException extends Exception {
 

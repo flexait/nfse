@@ -1,4 +1,4 @@
-package br.com.flexait.nfse;
+package br.com.flexait.nfse.converter;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
@@ -8,7 +8,7 @@ import java.util.Calendar;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.flexait.nfse.model.DateConverter;
+import br.com.flexait.nfse.converter.DateConverter;
 import br.com.flexait.nfse.model.Rps;
 
 public class DateConverterTest {

@@ -10,10 +10,14 @@ import java.util.Calendar;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.flexait.nfse.model.Prestador;
 import br.com.flexait.nfse.model.Rps;
 import br.com.flexait.nfse.model.Serie;
+import br.com.flexait.nfse.model.Servico;
+import br.com.flexait.nfse.model.SimNao;
 import br.com.flexait.nfse.model.Status;
 import br.com.flexait.nfse.model.Tipo;
+import br.com.flexait.nfse.model.Tomador;
 
 public class RpsBuilderTest {
 
@@ -133,6 +137,63 @@ public class RpsBuilderTest {
 		Calendar calendar = Calendar.getInstance();
 		Rps rps = builder.withCompetencia(calendar).build();
 		assertThat(rps.getInfDeclaracaoPrestacaoServico().getCompetencia(), equalTo(calendar));
+	}
+	
+	@Test
+	public void shouldSetServico() {
+		Servico servico = new ServicoBuilder().build();
+		Rps rps = builder.withServico(servico).build();
+		assertThat(rps.getInfDeclaracaoPrestacaoServico().getServico(), equalTo(servico));
+	}
+	
+	@Test
+	public void shouldSetPrestador() {
+		Prestador prestador = new PrestadorBuilder().build();
+		Rps rps = builder.withPrestador(prestador).build();
+		assertThat(rps.getInfDeclaracaoPrestacaoServico().getPrestador(), equalTo(prestador));
+	}
+	
+	@Test
+	public void shouldSetTomador() {
+		Tomador tomador = new TomadorBuilder().build();
+		Rps rps = builder.withTomador(tomador).build();
+		assertThat(rps.getInfDeclaracaoPrestacaoServico().getTomador(), equalTo(tomador));
+	}
+	
+	@Test
+	public void shouldSetOptanteSimplesNacional() {
+		Rps rps = builder.optanteSimplesNacional().build();
+		assertThat(rps.getInfDeclaracaoPrestacaoServico().getOptanteSimplesNacional(), equalTo(SimNao.SIM));
+	}
+	
+	@Test
+	public void shouldSetDefaultOptanteSimplesNacional() {
+		Rps rps = builder.build();
+		assertThat(rps.getInfDeclaracaoPrestacaoServico().getOptanteSimplesNacional(), equalTo(SimNao.NAO));
+	}
+	
+	@Test
+	public void shouldSetNaoOptanteSimplesNacional() {
+		Rps rps = builder.naoOptanteSimplesNacional().build();
+		assertThat(rps.getInfDeclaracaoPrestacaoServico().getOptanteSimplesNacional(), equalTo(SimNao.NAO));
+	}
+	
+	@Test
+	public void shouldSetIncentivoFiscal() {
+		Rps rps = builder.comIncentivoFiscal().build();
+		assertThat(rps.getInfDeclaracaoPrestacaoServico().getIncentivoFiscal(), equalTo(SimNao.SIM));
+	}
+	
+	@Test
+	public void shouldSetDefaultIncentivoFiscal() {
+		Rps rps = builder.build();
+		assertThat(rps.getInfDeclaracaoPrestacaoServico().getIncentivoFiscal(), equalTo(SimNao.NAO));
+	}
+	
+	@Test
+	public void shouldSetSemIncentivoFiscal() {
+		Rps rps = builder.semIncentivoFiscal().build();
+		assertThat(rps.getInfDeclaracaoPrestacaoServico().getIncentivoFiscal(), equalTo(SimNao.NAO));
 	}
 
 }

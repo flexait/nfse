@@ -1,6 +1,6 @@
 package br.com.flexait.nfse.builder;
 
-import br.com.flexait.nfse.NfseException;
+import br.com.flexait.nfse.exception.NfseException;
 import br.com.flexait.nfse.model.EnviarLoteRpsEnvio;
 import br.com.flexait.nfse.model.LoteRps;
 import br.com.flexait.nfse.validation.NfseValidator;
@@ -63,6 +63,22 @@ public class Nfse {
 	public Nfse disableValidation() {
 		this.enableValidation = false;
 		return this;
+	}
+
+	public static ServicoBuilder servico() {
+		return new ServicoBuilder();
+	}
+
+	public static PrestadorBuilder prestador() {
+		return new PrestadorBuilder();
+	}
+
+	public static TomadorBuilder tomador() {
+		return new TomadorBuilder();
+	}
+
+	public static EnderecoBuilder endereco() {
+		return new EnderecoBuilder();
 	}
 	
 }
