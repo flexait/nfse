@@ -34,7 +34,7 @@ public class LoteNfseBuilderTest {
 	
 	@Test
 	public void shouldSetIdLote() {
-		LoteRps lote = builder.withLoteId("foo").build();
+		LoteRps lote = builder.withIdLote("foo").build();
 		assertThat(lote.getId(), equalTo("foo"));	
 	}
 	

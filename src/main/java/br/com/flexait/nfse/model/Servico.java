@@ -1,5 +1,7 @@
 package br.com.flexait.nfse.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 public class Servico {
 
 	private Valores Valores;
@@ -14,13 +16,15 @@ public class Servico {
 	
 	private Integer CodigoMunicipio;
 	
-	private ExigibilidadeISS ExigibilidadeISS;
+	@XStreamAlias("ExigibilidadeISS")
+	private ExigibilidadeISS exigibilidadeISS;
 	
 	private Integer MunicipioIncidencia;
 
 	public Servico() {
 		Valores = new Valores();
 		IssRetido = SimNao.NAO;
+		exigibilidadeISS = ExigibilidadeISS.EXIGIVEL;
 	}
 
 	public Valores getValores() {
@@ -74,11 +78,11 @@ public class Servico {
 	}
 
 	public ExigibilidadeISS getExigibilidadeISS() {
-		return ExigibilidadeISS;
+		return exigibilidadeISS;
 	}
 
 	public void setExigibilidadeISS(ExigibilidadeISS exigibilidadeISS) {
-		ExigibilidadeISS = exigibilidadeISS;
+		this.exigibilidadeISS = exigibilidadeISS;
 	}
 
 	public Integer getMunicipioIncidencia() {
@@ -95,7 +99,7 @@ public class Servico {
 				+ ", ItemListaServico=" + ItemListaServico + ", CodigoCnae="
 				+ CodigoCnae + ", Discriminacao=" + Discriminacao
 				+ ", CodigoMunicipio=" + CodigoMunicipio
-				+ ", ExigibilidadeISS=" + ExigibilidadeISS
+				+ ", ExigibilidadeISS=" + this.exigibilidadeISS
 				+ ", MunicipioIncidencia=" + MunicipioIncidencia + "]";
 	}
 	

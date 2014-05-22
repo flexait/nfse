@@ -114,7 +114,7 @@ public class NfseTest {
 										.withBairro("Bairro")
 										.withCodigoMunicipio(321)
 										.withUf("ES")
-										.withCep(29111111)
+										.withCep("29111111")
 										.build()
 								)
 								.build()

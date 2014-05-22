@@ -61,7 +61,7 @@ public class EnderecoBuilderTest {
 	
 	@Test
 	public void shouldSetCep() {
-		Endereco endereco = builder.withCep(111).build();
-		assertThat(endereco.getCep(), equalTo(111));
+		Endereco endereco = builder.withCep("111").build();
+		assertThat(endereco.getCep(), equalTo("111"));
 	}
 }

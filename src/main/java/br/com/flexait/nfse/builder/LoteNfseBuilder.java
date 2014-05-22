@@ -7,7 +7,7 @@ import java.util.List;
 import br.com.flexait.nfse.model.LoteRps;
 import br.com.flexait.nfse.model.Rps;
 
-class LoteNfseBuilder {
+public class LoteNfseBuilder {
 
 	private final LoteRps loteRps;
 	private final List<Rps> listRps;
@@ -23,11 +23,6 @@ class LoteNfseBuilder {
 	}
 
 	public LoteNfseBuilder withIdLote(String id) {
-		loteRps.setId(id);
-		return this;
-	}
-
-	public LoteNfseBuilder withLoteId(String id) {
 		loteRps.setId(id);
 		return this;
 	}
@@ -58,7 +53,12 @@ class LoteNfseBuilder {
 	}
 
 	public LoteNfseBuilder addRps(Rps... rps) {
-		listRps.addAll(Arrays.asList(rps));
+		addRps(Arrays.asList(rps));
+		return this;
+	}
+
+	public LoteNfseBuilder addRps(List<Rps> gerarListaRps) {
+		listRps.addAll(gerarListaRps);
 		return this;
 	}
 

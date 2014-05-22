@@ -44,8 +44,8 @@ public class EnderecoBuilder {
 		return this;
 	}
 
-	public EnderecoBuilder withCep(int i) {
-		endereco.setCep(i);
+	public EnderecoBuilder withCep(String string) {
+		endereco.setCep(string);
 		return this;
 	}
 

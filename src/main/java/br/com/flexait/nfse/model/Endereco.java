@@ -14,7 +14,7 @@ public class Endereco {
 	
 	private String Uf;
 	
-	private Integer Cep;
+	private String Cep;
 
 	@Override
 	public String toString() {
@@ -72,12 +72,12 @@ public class Endereco {
 		Uf = uf;
 	}
 
-	public Integer getCep() {
+	public String getCep() {
 		return Cep;
 	}
 
-	public void setCep(Integer cep) {
-		Cep = cep;
+	public void setCep(String string) {
+		Cep = string;
 	}
 	
 }
