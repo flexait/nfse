@@ -122,9 +122,7 @@ public class NfseTest {
 						.build()
 					).build();
 		
-		Nfse nfse = builder.withLoteRps(lote);
-		String asXML = nfse.asXML();
-		System.out.println(asXML);
+		builder.withLoteRps(lote).asXML();
 	}
 
 	@Test
