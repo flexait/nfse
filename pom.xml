@@ -8,50 +8,14 @@
 	<packaging>jar</packaging>
 
 	<name>nfse</name>
-	<url>http://maven.apache.org</url>
+	<url>https://github.com/flexait/nfse</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencies>
-		<!-- WS CLIENT -->
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.1.3</version>
-		</dependency>
-		<dependency>
-			<groupId>wsdl4j</groupId>
-			<artifactId>wsdl4j</artifactId>
-			<version>1.6.2</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.xml</groupId>
-			<artifactId>jaxrpc-api</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-discovery</groupId>
-			<artifactId>commons-discovery</artifactId>
-			<version>0.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.axis</groupId>
-			<artifactId>axis</artifactId>
-			<version>1.4</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.activation</groupId>
-			<artifactId>activation</artifactId>
-			<version>1.1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.7</version>
-		</dependency>
-
+		<!-- XML -->
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
@@ -69,11 +33,6 @@
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-all</artifactId>
 			<version>1.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>1.8.4</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -91,6 +50,7 @@
 				<directory>${basedir}/src/test/java</directory>
 			</resource>
 		</resources>
+		
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -100,27 +60,6 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>com.zenjava</groupId>
-				<artifactId>javafx-maven-plugin</artifactId>
-				<version>2.0</version>
-				<configuration>
-					<mainClass>br.com.flexait.nfse.controller.NfseController</mainClass>
-					<!-- <keyStore>/home/dtelaroli/.keystore</keyStore> <keyStoreAlias>dtelaroli</keyStoreAlias> 
-						<keyStorePassword>admin123</keyStorePassword> <allPermissions>false</allPermissions> -->
-					<needMenu>true</needMenu>
-					<needShortcut>true</needShortcut>
-					<vendor>Flexa IT</vendor>
-					<verbose>true</verbose>
-				</configuration>
-			</plugin>
-
-			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-jar-plugin</artifactId> 
-				<configuration> <archive> <manifest> <addClasspath>true</addClasspath> <classpathPrefix>lib/</classpathPrefix> 
-				<mainClass>br.com.flexait.nfse.controller.NfseController</mainClass> </manifest> 
-				<manifestEntries> <Permissions>all-permissions</Permissions> <Codebase>localhost</Codebase> 
-				</manifestEntries> </archive> </configuration> </plugin> -->
 		</plugins>
 	</build>
 </project>
