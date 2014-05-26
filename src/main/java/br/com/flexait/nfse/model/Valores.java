@@ -1,5 +1,10 @@
 package br.com.flexait.nfse.model;
 
+import br.com.flexait.nfse.converter.DoubleConverter;
+
+import com.thoughtworks.xstream.annotations.XStreamConverter;
+
+@XStreamConverter(DoubleConverter.class)
 public class Valores {
 
 	private Double ValorServicos;

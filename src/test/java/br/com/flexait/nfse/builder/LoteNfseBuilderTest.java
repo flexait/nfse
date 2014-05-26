@@ -64,8 +64,8 @@ public class LoteNfseBuilderTest {
 	
 	@Test
 	public void shouldSetInscricaoMunicipal() {
-		LoteRps loteRps = builder.withInscricaoMunicipal("31313").build();
-		assertThat(loteRps.getInscricaoMunicipal(), equalTo("31313"));
+		LoteRps loteRps = builder.withInscricaoMunicipal(31313L).build();
+		assertThat(loteRps.getInscricaoMunicipal(), equalTo(31313L));
 	}
 	
 	@Test

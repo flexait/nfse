@@ -37,8 +37,8 @@ public class LoteNfseBuilder {
 		return this;
 	}
 
-	public LoteNfseBuilder withInscricaoMunicipal(String inscricaoMunicipal) {
-		loteRps.setInscricaoMunicipal(inscricaoMunicipal);
+	public LoteNfseBuilder withInscricaoMunicipal(Long inscricaomunicipal) {
+		loteRps.setInscricaoMunicipal(inscricaomunicipal);
 		return this;
 	}
 

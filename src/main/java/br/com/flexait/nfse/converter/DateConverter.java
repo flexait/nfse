@@ -1,15 +1,12 @@
 package br.com.flexait.nfse.converter;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import com.thoughtworks.xstream.converters.Converter;
-import com.thoughtworks.xstream.converters.MarshallingContext;
-import com.thoughtworks.xstream.converters.UnmarshallingContext;
-import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
+import com.thoughtworks.xstream.converters.SingleValueConverter;
 
-public class DateConverter implements Converter {
+public class DateConverter implements SingleValueConverter {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
@@ -17,19 +14,18 @@ public class DateConverter implements Converter {
 		return type.isAssignableFrom(GregorianCalendar.class);
 	}
 
-	public void marshal(Object source, HierarchicalStreamWriter writer,
-			MarshallingContext context) {
-		String converted = getConverted((GregorianCalendar)source);
-		writer.setValue(converted);
-	}
-
-	private String getConverted(GregorianCalendar source) {
+	private String getConverted(Calendar source) {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		return format.format(source.getTime());
 	}
 
-	public Object unmarshal(HierarchicalStreamReader reader,
-			UnmarshallingContext context) {
+	@Override
+	public String toString(Object obj) {
+		return getConverted((Calendar)obj);
+	}
+
+	@Override
+	public Object fromString(String str) {
 		return null;
 	}
 

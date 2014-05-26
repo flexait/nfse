@@ -92,7 +92,7 @@ public class NfseTest {
 						Nfse.rps().withNumero(1L).withInfId("d")
 						.withServico(
 								Nfse.servico()
-								.withValorServicos(10.0)
+								.withValorServicos(10.01657987)
 								.withItemListaServico("1")
 								.withExigibilidadeISS(ExigibilidadeISS.EXIGIBILIDADE_SUSPENSA_PROCESSO_ADMINISTRATIVO)
 								.withCodigoMunicipio(123)

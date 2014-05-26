@@ -1,5 +1,6 @@
 package br.com.flexait.nfse.converter;
 
+import static org.hamcrest.Matchers.endsWith;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
 
@@ -30,6 +31,13 @@ public class DateConverterTest {
 	public void shouldNotConvertIfOtherType() {
 		boolean canConvert = converter.canConvert(Rps.class);
 		assertThat(canConvert, equalTo(false));
+	}
+	
+	@Test
+	public void shouldConvert() {
+		Calendar calendar = Calendar.getInstance();
+		int operand = calendar.get(Calendar.DAY_OF_MONTH);
+		assertThat(converter.toString(calendar), endsWith(String.valueOf(operand)));
 	}
 
 }

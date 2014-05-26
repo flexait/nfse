@@ -20,7 +20,7 @@ public class LoteRps {
 	
 	private CpfCnpj CpfCnpj;
 	
-	private String InscricaoMunicipal;
+	private Long InscricaoMunicipal;
 	
 	private int QuantidadeRps;
 	
@@ -73,12 +73,12 @@ public class LoteRps {
 		CpfCnpj = cpfCnpj;
 	}
 
-	public String getInscricaoMunicipal() {
+	public Long getInscricaoMunicipal() {
 		return InscricaoMunicipal;
 	}
 
-	public void setInscricaoMunicipal(String inscricaoMunicipal) {
-		InscricaoMunicipal = inscricaoMunicipal;
+	public void setInscricaoMunicipal(Long l) {
+		InscricaoMunicipal = l;
 	}
 
 	public Integer getQuantidadeRps() {
