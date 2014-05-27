@@ -165,6 +165,10 @@
 		<url>git@github.com:flexait/nfse</url>
 		<tag>HEAD</tag>
 	</scm>
+	
+	<ciManagement>
+		<url>https://travis-ci.org/flexait/nfse</url>
+	</ciManagement>
 
 	<distributionManagement>
 		<repository>
