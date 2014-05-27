@@ -1,6 +1,8 @@
 nfse
 ====
 
+[![Build Status](https://travis-ci.org/flexait/nfse.svg?branch=master)](https://travis-ci.org/flexait/nfse)
+
 ## Api para geração de NFSe padrão Abrasf
 
 A API está pronta para enviar lote de notas no padrão da Prefeitura de Vila Velha, mas nem todas as funcionalidades estão implementadas.
