@@ -160,7 +160,7 @@
 	</build>
 
 	<scm>
-		<connection>scm:git:git@github.com:flexait/nfse</connection>
+		<connection>scm:git:https://github.com/flexait/nfse.git</connection>
 		<developerConnection>scm:git:git@github.com:flexait/nfse.git</developerConnection>
 		<url>git@github.com:flexait/nfse</url>
 		<tag>HEAD</tag>
@@ -192,4 +192,28 @@
 			<timezone>-3</timezone>
 		</developer>
 	</developers>
+
+	<reporting>
+		<plugins>
+			<!-- Normally, we take off the dependency report, saves time. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<formats>
+						<format>html</format>
+					</formats>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>
