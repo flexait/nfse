@@ -48,6 +48,9 @@ public class Valores {
 	}
 
 	public void setValorServicos(Double valorServicos) {
+		if(Aliquota != null) {
+			ValorIss = valorServicos * Aliquota / 100;
+		}
 		ValorServicos = valorServicos;
 	}
 
@@ -120,6 +123,9 @@ public class Valores {
 	}
 
 	public void setAliquota(Double aliquota) {
+		if(ValorServicos != null) {
+			ValorIss = ValorServicos * aliquota / 100;
+		}
 		Aliquota = aliquota;
 	}
 
