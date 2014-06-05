@@ -36,4 +36,10 @@ public class TomadorBuilderTest {
 		Tomador tomador = builder.withEndereco(endereco).build();
 		assertThat(tomador.getEndereco(), equalTo(endereco));
 	}
+	
+	@Test
+	public void shouldSetRazaoSocial() {
+		Tomador tomador = builder.withRazaoSocial("foo").build();
+		assertThat(tomador.getRazaoSocial(), equalTo("foo"));
+	}
 }

@@ -2,6 +2,10 @@ package br.com.flexait.nfse.builder;
 
 import java.util.Calendar;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import br.com.flexait.nfse.converter.DateConverter;
 import br.com.flexait.nfse.model.IdentificacaoRps;
 import br.com.flexait.nfse.model.InfDeclaracaoPrestacaoServico;
 import br.com.flexait.nfse.model.Prestador;
@@ -14,6 +18,8 @@ import br.com.flexait.nfse.model.Tipo;
 import br.com.flexait.nfse.model.Tomador;
 
 public class RpsBuilder {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(RpsBuilder.class);
 	
 	private final Rps rps;
 	
@@ -52,6 +58,8 @@ public class RpsBuilder {
 	}
 
 	public RpsBuilder withData(Calendar dataEmissao) {
+		LOG.debug("Emissão: {}", convertDate(dataEmissao));
+		
 		rpsDetalhe.setDataEmissao(dataEmissao);
 		return this;
 	}
@@ -67,6 +75,8 @@ public class RpsBuilder {
 	}
 
 	public RpsBuilder withNumero(long numero) {
+		LOG.debug("RPS: {}", numero);
+		
 		identificacaoRps.setNumero(numero);
 		return this;
 	}
@@ -87,8 +97,14 @@ public class RpsBuilder {
 	}
 
 	public RpsBuilder withCompetencia(Calendar competencia) {
+		LOG.debug("Competência: {}", convertDate(competencia));
+		
 		infDeclaracaoPrestacaoServico.setCompetencia(competencia);
 		return this;
+	}
+
+	private String convertDate(Calendar date) {
+		return new DateConverter().toString(date);
 	}
 
 	public RpsBuilder withServico(Servico servico) {

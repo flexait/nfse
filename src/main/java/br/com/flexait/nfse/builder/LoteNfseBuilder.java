@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import br.com.flexait.nfse.model.LoteRps;
 import br.com.flexait.nfse.model.Rps;
 
 public class LoteNfseBuilder {
 
+	private static final Logger LOG = LoggerFactory.getLogger(LoteNfseBuilder.class);
 	private final LoteRps loteRps;
 	private final List<Rps> listRps;
 	
@@ -28,6 +32,8 @@ public class LoteNfseBuilder {
 	}
 
 	public LoteNfseBuilder withNumeroLote(Long numero) {
+		LOG.debug("Número do lote: {}", numero);
+		
 		loteRps.setNumeroLote(numero);
 		return this;
 	}
@@ -38,16 +44,22 @@ public class LoteNfseBuilder {
 	}
 
 	public LoteNfseBuilder withInscricaoMunicipal(Long inscricaomunicipal) {
+		LOG.debug("Inscrição Municipal: {}", inscricaomunicipal);
+		
 		loteRps.setInscricaoMunicipal(inscricaomunicipal);
 		return this;
 	}
 
 	public LoteNfseBuilder v2_02() {
+		LOG.debug("Configurada versão 2.02");
+		
 		loteRps.v2_02();
 		return this;
 	}
 
 	public LoteNfseBuilder v2_01() {
+		LOG.debug("Configurada versão 2.01");
+		
 		loteRps.v2_01();
 		return this;
 	}

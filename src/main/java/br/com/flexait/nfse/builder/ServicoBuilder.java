@@ -1,11 +1,15 @@
 package br.com.flexait.nfse.builder;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import br.com.flexait.nfse.model.ExigibilidadeISS;
 import br.com.flexait.nfse.model.Servico;
 import br.com.flexait.nfse.model.SimNao;
 
 public class ServicoBuilder {
 
+	private static final Logger LOG = LoggerFactory.getLogger(ServicoBuilder.class);
 	private final Servico servico;
 
 	public ServicoBuilder() {
@@ -13,6 +17,8 @@ public class ServicoBuilder {
 	}
 	
 	public ServicoBuilder withValorServicos(double valor) {
+		LOG.debug("Valor Serviço: {}", valor);
+		
 		servico.getValores().setValorServicos(valor);
 		return this;
 	}
@@ -62,6 +68,8 @@ public class ServicoBuilder {
 	}
 
 	public ServicoBuilder withAliquota(double d) {
+		LOG.debug("Aliquota: {}", d);
+		
 		servico.getValores().setAliquota(d);
 		return this;
 	}
@@ -77,11 +85,15 @@ public class ServicoBuilder {
 	}
 
 	public ServicoBuilder issRetido() {
+		LOG.debug("ISS Retido: Sim");
+		
 		servico.setIssRetido(SimNao.SIM);
 		return this;
 	}
 	
 	public ServicoBuilder issNaoRetido() {
+		LOG.debug("ISS Retido: Não");
+		
 		servico.setIssRetido(SimNao.NAO);
 		return this;
 	}

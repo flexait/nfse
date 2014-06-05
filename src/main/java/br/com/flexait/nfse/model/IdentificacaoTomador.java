@@ -15,7 +15,7 @@ public class IdentificacaoTomador {
 	public void setCpfCnpj(CpfCnpj cpfCnpj) {
 		CpfCnpj = cpfCnpj;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "IdentificacaoTomador [CpfCnpj=" + CpfCnpj + "]";
