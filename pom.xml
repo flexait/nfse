@@ -28,6 +28,17 @@
 			<version>1.4.7</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+
 		<!-- TESTES -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -54,6 +65,15 @@
 			</resource>
 			<resource>
 				<directory>${basedir}/src/test/java</directory>
+				<excludes>
+					<exclude>**</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>${basedir}/src/test/resources</directory>
+				<excludes>
+					<exclude>**</exclude>
+				</excludes>
 			</resource>
 		</resources>
 
@@ -165,7 +185,7 @@
 		<url>git@github.com:flexait/nfse</url>
 		<tag>HEAD</tag>
 	</scm>
-	
+
 	<ciManagement>
 		<url>https://travis-ci.org/flexait/nfse</url>
 	</ciManagement>
