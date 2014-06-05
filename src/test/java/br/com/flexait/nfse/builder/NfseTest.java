@@ -143,4 +143,47 @@ public class NfseTest {
 	public void shouldReturnEnderecoBuilder() {
 		assertThat(Nfse.endereco(), instanceOf(EnderecoBuilder.class));
 	}
+	
+	@Test
+	public void shouldSetNullIfStringEmpty() throws Exception {
+		Rps rps = Nfse.rps().withNumero(1L).withInfId("d")
+				.withServico(
+						Nfse.servico()
+						.withValorServicos(10.01657987)
+						.withItemListaServico("1")
+						.withExigibilidadeISS(ExigibilidadeISS.EXIGIBILIDADE_SUSPENSA_PROCESSO_ADMINISTRATIVO)
+						.withCodigoMunicipio(123)
+						.withDiscriminacao("Test")
+						.build()
+				)
+				.withPrestador(
+						Nfse.prestador()
+						.withCnpj("12312312312312")
+						.build()
+				)
+				.withTomador(
+						Nfse.tomador()
+						.withCpf("00000000000")
+						.withEndereco(
+								Nfse.endereco()
+								.withEndereco("Rua")
+								.withNumero(1)
+								.withBairro("Bairro")
+								.withComplemento("")
+								.withCodigoMunicipio(321)
+								.withUf("ES")
+								.withCep("29111111")
+								.build()
+						)
+						.build()
+				)
+				.build();
+				LoteRps lote = Nfse
+						.loteNfse()
+						.withCnpj("00000000000000")
+						.withNumeroLote(123123L)
+						.addRps(rps, rps).build();
+				
+				builder.withLoteRps(lote).asXML();
+	}
 }

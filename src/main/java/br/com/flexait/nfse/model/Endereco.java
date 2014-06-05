@@ -41,6 +41,9 @@ public class Endereco {
 	}
 
 	public String getComplemento() {
+		if(Complemento == null || Complemento.isEmpty()) {
+			return null;
+		}
 		return Complemento;
 	}
 

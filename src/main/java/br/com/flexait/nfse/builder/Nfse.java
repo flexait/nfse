@@ -3,6 +3,7 @@ package br.com.flexait.nfse.builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import br.com.flexait.nfse.converter.EmptyConverter;
 import br.com.flexait.nfse.exception.NfseException;
 import br.com.flexait.nfse.model.EnviarLoteRpsEnvio;
 import br.com.flexait.nfse.model.LoteRps;
@@ -23,11 +24,13 @@ public class Nfse {
 		enviarLoteRpsEnvio = new EnviarLoteRpsEnvio();
 		enableValidation = true;
 	}
-
+	
 	private XStream xstream() {
 		XStream xstream = new XStream();
 		xstream.alias("EnviarLoteRpsEnvio", EnviarLoteRpsEnvio.class);
 		xstream.setMode(XStream.NO_REFERENCES);
+		xstream.registerConverter(new EmptyConverter());
+		
 		xstream.autodetectAnnotations(true);
 		return xstream;
 	}
