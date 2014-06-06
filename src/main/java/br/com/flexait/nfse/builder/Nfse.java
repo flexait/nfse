@@ -27,7 +27,6 @@ public class Nfse {
 	
 	private XStream xstream() {
 		XStream xstream = new XStream();
-		xstream.alias("EnviarLoteRpsEnvio", EnviarLoteRpsEnvio.class);
 		xstream.setMode(XStream.NO_REFERENCES);
 		xstream.registerConverter(new EmptyConverter());
 		

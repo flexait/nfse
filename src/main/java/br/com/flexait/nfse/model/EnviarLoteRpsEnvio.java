@@ -3,6 +3,7 @@ package br.com.flexait.nfse.model;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 
+@XStreamAlias("EnviarLoteRpsEnvio")
 public class EnviarLoteRpsEnvio {
 
 	@XStreamAsAttribute
