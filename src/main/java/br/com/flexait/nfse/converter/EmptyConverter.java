@@ -15,7 +15,7 @@ public class EmptyConverter extends StringConverter {
 		if(str != null && str.isEmpty()) {
 			LOG.info("Empty string ignored");
 			
-			return "n/a";
+			return "-";
 		}
 		return super.toString(obj);
 	}
