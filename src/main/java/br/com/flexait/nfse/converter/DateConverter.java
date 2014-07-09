@@ -15,6 +15,9 @@ public class DateConverter implements SingleValueConverter {
 	}
 
 	private String getConverted(Calendar source) {
+		if(source == null) {
+			throw new IllegalArgumentException("Date not be null");
+		}
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		return format.format(source.getTime());
 	}
