@@ -9,13 +9,26 @@ A API está pronta para enviar lote de notas no padrão da Prefeitura de Vila Ve
 
 Fique à vontade para contribuir ou solicitar melhorias.
 
-### Adicionando a dependência (snapshot por enquanto)
+### Adicionando a dependência (versão estável)
+
+```
+<dependency>
+        <groupId>br.com.flexait</groupId>
+        <artifactId>nfse</artifactId>
+        <version>0.0.1</version>
+</dependency>
+```
+
+*Download* em https://github.com/flexait/nfse/releases/tag/nfse-0.0.1
+
+
+### Adicionando a dependência (versão instável)
 
 ```
 <dependency>
 	<groupId>br.com.flexait</groupId>
 	<artifactId>nfse</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0-SNAPSHOT</version>
 </dependency>
 		
 <repository>
