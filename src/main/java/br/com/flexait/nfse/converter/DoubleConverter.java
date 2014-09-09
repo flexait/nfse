@@ -1,6 +1,7 @@
 package br.com.flexait.nfse.converter;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 
 public class DoubleConverter extends com.thoughtworks.xstream.converters.basic.DoubleConverter {
 
@@ -9,7 +10,21 @@ public class DoubleConverter extends com.thoughtworks.xstream.converters.basic.D
 		if(obj == null) {
 			return "0.00";
 		}
-		return new DecimalFormat("#0.00").format(obj);
+		DecimalFormat format = decimalFormat();
+		
+		return format.format(obj);
+	}
+
+	private DecimalFormat decimalFormat() {
+		DecimalFormat format = new DecimalFormat("#0.00");
+		format.setDecimalFormatSymbols(symbols());
+		return format;
+	}
+
+	private DecimalFormatSymbols symbols() {
+		DecimalFormatSymbols newSymbols = new DecimalFormatSymbols();
+		newSymbols.setDecimalSeparator('.');
+		return newSymbols;
 	}
 	
 }

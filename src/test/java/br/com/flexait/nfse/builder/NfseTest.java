@@ -145,11 +145,16 @@ public class NfseTest {
 	}
 	
 	@Test
-	public void shouldSetNullIfStringEmpty() throws Exception {
+	public void shouldSetValorServicos() throws Exception {
+		String xml = generateXML();
+				assertThat(xml, containsString("<ValorServicos>214.41</ValorServicos>"));
+	}
+	
+	private String generateXML() throws Exception {
 		Rps rps = Nfse.rps().withNumero(1L).withInfId("d")
 				.withServico(
 						Nfse.servico()
-						.withValorServicos(10.01657987)
+						.withValorServicos(214.41)
 						.withItemListaServico("1")
 						.withExigibilidadeISS(ExigibilidadeISS.EXIGIBILIDADE_SUSPENSA_PROCESSO_ADMINISTRATIVO)
 						.withCodigoMunicipio(123)
@@ -184,6 +189,8 @@ public class NfseTest {
 						.withNumeroLote(123123L)
 						.addRps(rps, rps).build();
 				
-				builder.withLoteRps(lote).asXML();
+				String xml = builder.withLoteRps(lote).asXML();
+		return xml;
 	}
+	
 }
