@@ -21,20 +21,6 @@ Fique à vontade para contribuir ou solicitar melhorias.
 
 *Download* em https://github.com/flexait/nfse/releases/tag/nfse-0.1.0
 
-
-### Adicionando a dependência (versão instável)
-
-```
-<dependency>
-	<groupId>br.com.flexait</groupId>
-	<artifactId>nfse</artifactId>
-	<version>0.1.0</version>
-</dependency>
-		
-```
-
-
-
 ### Exemplo de uso
 
 ```
