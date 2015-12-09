@@ -15,11 +15,11 @@ Fique à vontade para contribuir ou solicitar melhorias.
 <dependency>
         <groupId>br.com.flexait</groupId>
         <artifactId>nfse</artifactId>
-        <version>0.0.1</version>
+        <version>0.1.0</version>
 </dependency>
 ```
 
-*Download* em https://github.com/flexait/nfse/releases/tag/nfse-0.0.1
+*Download* em https://github.com/flexait/nfse/releases/tag/nfse-0.1.0
 
 
 ### Adicionando a dependência (versão instável)
@@ -28,16 +28,9 @@ Fique à vontade para contribuir ou solicitar melhorias.
 <dependency>
 	<groupId>br.com.flexait</groupId>
 	<artifactId>nfse</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.1.0</version>
 </dependency>
 		
-<repository>
-	<id>sonatype-oss-snapshot</id>
-	<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-	<snapshots>
-		<enabled>true</enabled>
-	</snapshots>
-</repository>
 ```
 
 
