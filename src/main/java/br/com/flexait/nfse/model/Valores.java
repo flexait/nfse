@@ -48,10 +48,8 @@ public class Valores {
 	}
 
 	public void setValorServicos(Double valorServicos) {
-		if(Aliquota != null) {
-			ValorIss = valorServicos * Aliquota / 100;
-		}
 		ValorServicos = valorServicos;
+		calcIss();
 	}
 
 	public Double getValorDeducoes() {
@@ -123,10 +121,14 @@ public class Valores {
 	}
 
 	public void setAliquota(Double aliquota) {
-		if(ValorServicos != null) {
-			ValorIss = ValorServicos * aliquota / 100;
-		}
 		Aliquota = aliquota;
+		calcIss();
+	}
+
+	private void calcIss() {
+		if(ValorServicos != null && Aliquota != null) {
+			ValorIss = ValorServicos * Aliquota / 100.0;
+		}
 	}
 
 	public Double getDescontoIncondicionado() {
