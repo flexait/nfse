@@ -15,7 +15,7 @@ Fique à vontade para contribuir ou solicitar melhorias.
 <dependency>
         <groupId>br.com.flexait</groupId>
         <artifactId>nfse</artifactId>
-        <version>0.1.0</version>
+        <version>0.1.1</version>
 </dependency>
 ```
 
@@ -59,7 +59,14 @@ Nfse.nfse()
 									.withUf("ES")
 									.withCep("29111111")
 									.build()
-							).build()
+							)
+							.withContato(
+								Nfse.contato()
+									.withEmail("email@email.com")
+									.withTelefone("2799999999")
+									build()
+							)
+							.build()
 					).build()
 			).build()
 	).asXML();
@@ -76,6 +83,7 @@ import static br.com.flexait.nfse.builder.Nfse.prestador;
 import static br.com.flexait.nfse.builder.Nfse.rps;
 import static br.com.flexait.nfse.builder.Nfse.servico;
 import static br.com.flexait.nfse.builder.Nfse.tomador;
+import static br.com.flexait.nfse.builder.Nfse.contato;
 
 ...
 
@@ -113,7 +121,14 @@ nfse().withLoteRps(
 								.withUf("ES")
 								.withCep("29111111")
 								.build()
-						).build()
+						)
+						.withContato(
+							contato()
+								.withEmail("email@email.com")
+								.withTelefone("2799999999")
+								build()
+						)
+						.build()
 				).build()
 			).build()
 		).asXML();
