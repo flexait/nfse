@@ -3,6 +3,7 @@ package br.com.flexait.nfse.builder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import br.com.flexait.nfse.model.Contato;
 import br.com.flexait.nfse.model.Endereco;
 import br.com.flexait.nfse.model.Tomador;
 
@@ -35,6 +36,13 @@ public class TomadorBuilder {
 		LOG.debug("Tomador: {}", string);
 		
 		tomador.setRazaoSocial(string);
+		return this;
+	}
+
+	public TomadorBuilder withContato(Contato contato) {
+		LOG.debug("Tomador: {}", contato);
+		
+		tomador.setContato(contato);
 		return this;
 	}
 	

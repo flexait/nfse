@@ -5,10 +5,12 @@ public class Tomador {
 	private final IdentificacaoTomador IdentificacaoTomador;
 	private String RazaoSocial;
 	private Endereco Endereco;
+	private Contato Contato;
 	
 	public Tomador() {
 		IdentificacaoTomador = new IdentificacaoTomador();
 		Endereco = new Endereco();
+		Contato = new Contato();
 	}
 
 	public Endereco getEndereco() {
@@ -29,6 +31,14 @@ public class Tomador {
 
 	public IdentificacaoTomador getIdentificacaoTomador() {
 		return IdentificacaoTomador;
+	}
+
+	public Contato getContato() {
+		return Contato;
+	}
+
+	public void setContato(Contato contato) {
+		Contato = contato;
 	}
 
 }

@@ -94,4 +94,8 @@ public class Nfse {
 		return new EnderecoBuilder();
 	}
 	
+	public static ContatoBuilder contato() {
+		return new ContatoBuilder();
+	}
+	
 }
