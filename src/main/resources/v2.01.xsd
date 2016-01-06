@@ -319,7 +319,7 @@
 	<xsd:complexType name="tcContato">
 		<xsd:sequence>
 			<xsd:element name="Telefone" type="tsTelefone" minOccurs="0"
-				maxOccurs="1" />
+				maxOccurs="unbounded" />
 			<xsd:element name="Email" type="tsEmail" minOccurs="0"
 				maxOccurs="1" />
 		</xsd:sequence>
