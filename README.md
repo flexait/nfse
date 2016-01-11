@@ -145,4 +145,4 @@ mvn release:perform
 
 Após o upload dos artefatos acesse o [repositório](https://oss.sonatype.org), efetue login, navegue até o Staging repositories.
 Selecione os repositórios criados para o deploy (normalmente um ou dois), clique em "Close", depois de fechados, clique em "Release".
-Normalmente, demora um tempo até o artefato está efetivamente disponível, pelo tempo de sincronização entre os servidores.
+Normalmente, demora um tempo até o artefato estar efetivamente disponível, pelo tempo de sincronização entre os servidores.
