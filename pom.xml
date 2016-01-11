@@ -9,7 +9,7 @@
 
 	<groupId>br.com.flexait</groupId>
 	<artifactId>nfse</artifactId>
-	<version>0.1.4-SNAPSHOT</version>
+	<version>0.1.4</version>
 	<packaging>jar</packaging>
 
 	<name>nfse</name>
