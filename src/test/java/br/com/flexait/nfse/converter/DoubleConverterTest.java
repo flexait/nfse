@@ -40,8 +40,8 @@ public class DoubleConverterTest {
 	}
 	
 	@Test
-	public void shouldReturnDecimalRoundedToUp() {
-		assertThat(converter.toString(214.441), equalTo("214.45"));
+	public void shouldReturnDecimalRoundedToDown() {
+		assertThat(converter.toString(214.441), equalTo("214.44"));
 	}
 	
 	@Test

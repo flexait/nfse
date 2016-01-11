@@ -1,6 +1,7 @@
 package br.com.flexait.nfse.model;
 
 import br.com.flexait.nfse.converter.DoubleConverter;
+import br.com.flexait.nfse.converter.Rounding;
 
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 
@@ -127,8 +128,13 @@ public class Valores {
 
 	private void calcIss() {
 		if(ValorServicos != null && Aliquota != null) {
-			ValorIss = ValorServicos * Aliquota / 100.0;
+			double calc = roundedValue(ValorServicos) * roundedValue(Aliquota) / 100.0;
+			ValorIss = roundedValue(calc);
 		}
+	}
+
+	private double roundedValue(Double value) {
+		return new Rounding(value).valueDouble();
 	}
 
 	public Double getDescontoIncondicionado() {
