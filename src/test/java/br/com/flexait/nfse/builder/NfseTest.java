@@ -1,5 +1,6 @@
 package br.com.flexait.nfse.builder;
 
+import static br.com.flexait.nfse.builder.Nfse.contato;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.notNullValue;
@@ -178,6 +179,12 @@ public class NfseTest {
 								.withCodigoMunicipio(321)
 								.withUf("ES")
 								.withCep("29111111")
+								.build()
+						)
+						.withContato(
+							contato()
+								.withEmail("email@email.com")
+								.withTelefone("2799999999")
 								.build()
 						)
 						.build()

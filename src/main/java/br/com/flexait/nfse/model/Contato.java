@@ -2,9 +2,9 @@ package br.com.flexait.nfse.model;
 
 public class Contato {
 
-	private String Email;
-	
 	private String Telefone;
+
+	private String Email;
 
 	public String getEmail() {
 		return Email;
