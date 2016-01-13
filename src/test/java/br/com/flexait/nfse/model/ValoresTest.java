@@ -63,5 +63,13 @@ public class ValoresTest {
 		
 		assertThat(valores.getValorIss(), equalTo(3.13));
 	}
+	
+	@Test
+	public void shouldCalculateValorIssRoundingToUp5() {
+		valores.setAliquota(_2_5);
+		valores.setValorServicos(199.0);
+		
+		assertThat(valores.getValorIss(), equalTo(4.98));
+	}
 
 }

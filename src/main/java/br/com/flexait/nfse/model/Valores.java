@@ -128,7 +128,7 @@ public class Valores {
 
 	private void calcIss() {
 		if(ValorServicos != null && Aliquota != null) {
-			double calc = roundedValue(ValorServicos) * roundedValue(Aliquota) / 100.0;
+			double calc = ValorServicos * Aliquota / 100.0;
 			ValorIss = roundedValue(calc);
 		}
 	}

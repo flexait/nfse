@@ -23,14 +23,15 @@ public class Rounding {
 	}
 
 	private Double getRounded() {
-		BigDecimal bd = new BigDecimal(value).setScale(2, BigDecimal.ROUND_HALF_UP);
+		String toStringForPrecision = String.valueOf(value);
+		BigDecimal bd = new BigDecimal(toStringForPrecision).setScale(2, BigDecimal.ROUND_HALF_UP);
 		return bd.doubleValue();
 	}
 	
 	private DecimalFormat decimalFormat() {
 		DecimalFormat format = new DecimalFormat("#0.00");
 		format.setDecimalFormatSymbols(symbols());
-		format.setRoundingMode(RoundingMode.HALF_EVEN);
+		format.setRoundingMode(RoundingMode.HALF_UP);
 		return format;
 	}
 
