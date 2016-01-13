@@ -15,7 +15,7 @@ Fique à vontade para contribuir ou solicitar melhorias.
 <dependency>
         <groupId>br.com.flexait</groupId>
         <artifactId>nfse</artifactId>
-        <version>0.1.3</version>
+        <version>0.1.5</version>
 </dependency>
 ```
 
