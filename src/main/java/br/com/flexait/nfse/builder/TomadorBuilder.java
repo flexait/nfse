@@ -46,4 +46,12 @@ public class TomadorBuilder {
 		return this;
 	}
 	
+	public TomadorBuilder withCnpj(String string) {
+		LOG.debug("Pretador: {}", string);
+		
+		tomador.getIdentificacaoTomador().getCpfCnpj().setCnpj(string);
+		return this;
+	}
+	
+	
 }
